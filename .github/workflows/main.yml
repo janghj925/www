@@ -9,10 +9,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+
+      - name: Show current directory contents
+        run: ls -al
+
+      - name: Show www directory contents
+        run: ls -al www
 
       - name: Set up JDK 20
         uses: actions/setup-java@v4
@@ -21,11 +25,10 @@ jobs:
           distribution: 'temurin'
 
       - name: Build with Maven
-        working-directory: ./www/www
         run: mvn clean package
-        
+
       - name: Upload JAR artifact
         uses: actions/upload-artifact@v4
         with:
           name: springboot-app
-          path: www/target/*.jar
+          path: target/*.jar

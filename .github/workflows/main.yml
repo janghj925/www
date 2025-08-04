@@ -29,6 +29,9 @@ jobs:
       - name: Show target directory contents
         run: ls -al target || echo "target directory does not exist"
 
+      - name: Show directory structure
+        run: ls -alR
+
       - name: Upload JAR artifact
         uses: actions/upload-artifact@v4
         with:

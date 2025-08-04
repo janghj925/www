@@ -21,7 +21,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Build with Maven
-        working-directory: ./www/www
+        working-directory: .
         run: mvn clean package
         
       - name: Upload JAR artifact

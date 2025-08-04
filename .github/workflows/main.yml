@@ -21,19 +21,11 @@ jobs:
           distribution: 'temurin'
 
       - name: Build with Maven
+        working-directory: ./www
         run: mvn clean package
         
-      - name: Show current directory contents
-        run: ls -al
-
-      - name: Show target directory contents
-        run: ls -al target || echo "target directory does not exist"
-
-      - name: Show directory structure
-        run: ls -alR
-
       - name: Upload JAR artifact
         uses: actions/upload-artifact@v4
         with:
           name: springboot-app
-          path: target/*.jar
+          path: www/target/*.jar

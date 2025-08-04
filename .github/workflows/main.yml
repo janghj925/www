@@ -21,11 +21,11 @@ jobs:
           distribution: 'temurin'
 
       - name: Build with Maven
-        working-directory: .
+        working-directory: ./www
         run: mvn clean package
         
       - name: Upload JAR artifact
         uses: actions/upload-artifact@v4
         with:
           name: springboot-app
-          path: www/www/target/*.jar
+          path: www/target/*.jar
